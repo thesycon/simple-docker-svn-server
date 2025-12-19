@@ -10,6 +10,10 @@ EXPOSE 3690
 
 HEALTHCHECK CMD netstat -ln | grep 3690 || exit 1
 
+# mount point that can be used to hold config files common to all svn repos
+VOLUME [ "/etc/svnserve" ]
+
+# root path for all repos
 VOLUME [ "/var/opt/svn" ]
 WORKDIR /var/opt/svn
 
